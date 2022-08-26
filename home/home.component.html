@@ -1,0 +1,22 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Check-Out Date</label>
+    <input type="date" class="form-control" id="startDate" name = "startDate" formControlName="startDate">
+  </div>
+  <div class="form-group">
+    <label>Return Date</label>
+    <input type="date" class="form-control" id="returnDate" name="returnDate" formControlName="returnDate">
+  </div>
+
+  <div class="form-group">
+    <select class="form-select" id ="Country" name="Country" formControlName="Country">
+      <option *ngFor="let Country of countryList" [ngValue]="Country">{{Country.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div *ngIf="this.formOutput!=null && this.formOutput!=undefined">
+  <p>The penalty is {{this.formOutput.currencySymbol}} {{this.formOutput.penalty}}</p>
+</div>
